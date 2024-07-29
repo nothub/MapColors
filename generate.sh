@@ -7,7 +7,7 @@ cd "$(dirname "$(realpath "$0")")"
 mkdir -p run
 echo 'eula=true' >run/eula.txt
 
-./gradlew runServer
+./gradlew --console plain --no-daemon runServer
 
 mkdir -p build/dist
 cp run/colors.csv build/dist/
