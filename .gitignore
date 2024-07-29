@@ -1,0 +1,6 @@
+/.devbox/
+/.gradle/
+/.idea/
+/build/
+/run/
+/devbox.lock

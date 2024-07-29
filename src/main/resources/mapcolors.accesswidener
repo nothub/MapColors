@@ -1,0 +1,4 @@
+accessWidener v2 named
+# https://fabricmc.net/wiki/tutorial:accesswideners
+accessible  class   net/minecraft/world/level/material/MapColor
+accessible  field   net/minecraft/world/level/material/MapColor MATERIAL_COLORS [Lnet/minecraft/world/level/material/MapColor;

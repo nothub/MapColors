@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "mapcolors",
+  "version": "${version}",
+  "name": "MapColors",
+  "description": "Dump map-block-color-table-mappings",
+  "license": "MIT",
+  "environment": "server",
+  "accessWidener" : "mapcolors.accesswidener",
+  "entrypoints": {
+    "main": [
+      "lol.hub.mapcolors.Main"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}"
+  }
+}
