@@ -27,16 +27,6 @@ jobs:
       - uses: actions/github-script@v5
         with:
           script: |
-            github.rest.git.deleteRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'refs/tags/${{ env.MINECRAFT_VERSION }}'
-            })
-        continue-on-error: true
-
-      - uses: actions/github-script@v5
-        with:
-          script: |
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
