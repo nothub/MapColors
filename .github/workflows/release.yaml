@@ -10,17 +10,6 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
 
-      - run: echo "EPOCH=$(date +%s)" >> $GITHUB_ENV
-      - uses: actions/github-script@v5
-        with:
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'refs/tags/${{ env.EPOCH }}',
-              sha: context.sha
-            })
-
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -36,9 +25,23 @@ jobs:
 
       - run: ./generate.sh
 
+      - run: echo "EPOCH=$(date +%s)" >> $GITHUB_ENV
+
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{ env.EPOCH }}',
+              sha: context.sha
+            })
+
       - run: echo "MINECRAFT_VERSION=$(cat gradle.properties | grep -oP 'minecraft_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
+
       - uses: softprops/action-gh-release@v2
         with:
           name: 'MC ${{ env.MINECRAFT_VERSION }}'
           body: 'Release generated at commit: ${{ github.sha }}'
           files: 'build/dist/*'
+          tag_name: '${{ env.EPOCH }}'
