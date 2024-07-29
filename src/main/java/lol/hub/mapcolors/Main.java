@@ -21,16 +21,23 @@ public class Main implements ModInitializer {
 
         StringBuilder csv = new StringBuilder();
         for (MapColor color : table) {
+            var rgba = 0xff000000 | color.col;
+            var r = (rgba >> 16) & 0xFF;
+            var g = (rgba >> 8) & 0xFF;
+            var b = rgba & 0xFF;
+            var a = color.id > 0 ? 255 : 0;
             csv
                     .append(color.id)
                     .append(",")
-                    .append(((0xff000000 | color.col) >> 16) & 0xFF)
+                    .append(r)
                     .append(",")
-                    .append(((0xff000000 | color.col) >> 8) & 0xFF)
+                    .append(g)
                     .append(",")
-                    .append((0xff000000 | color.col) & 0xFF)
+                    .append(b)
                     .append(",")
-                    .append(color.id > 0 ? 255 : 0)
+                    .append(a)
+                    .append(",")
+                    .append(String.format("%02X%02X%02X", r, g, b))
                     .append("\n");
         }
 
