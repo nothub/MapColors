@@ -31,7 +31,8 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: 'refs/tags/${{ env.MINECRAFT_VERSION }}'
-            }) || true
+            })
+        continue-on-error: true
 
       - uses: actions/github-script@v5
         with:
