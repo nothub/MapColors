@@ -3,7 +3,6 @@ package lol.hub.mapcolors;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.world.level.material.MapColor;
 
-import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,29 +14,25 @@ public class Main implements ModInitializer {
     @Override
     public void onInitialize() {
 
-        var colors = Arrays.stream(MapColor.MATERIAL_COLORS)
+        var table = Arrays.stream(MapColor.MATERIAL_COLORS)
                 .filter(Objects::nonNull)
                 .sorted(Comparator.comparingInt(value -> value.id))
                 .toList();
 
         StringBuilder csv = new StringBuilder();
-        for (MapColor color : colors) {
-            Color c = new Color(color.col);
+        for (MapColor color : table) {
             csv
                     .append(color.id)
                     .append(",")
-                    .append(c.getRed())
+                    .append(((0xff000000 | color.col) >> 16) & 0xFF)
                     .append(",")
-                    .append(c.getGreen())
+                    .append(((0xff000000 | color.col) >> 8) & 0xFF)
                     .append(",")
-                    .append(c.getBlue())
+                    .append((0xff000000 | color.col) & 0xFF)
                     .append(",")
                     .append(color.id > 0 ? 255 : 0)
-                    .append(",")
-                    .append(String.format("%02X%02X%02X", c.getRed(), c.getGreen(), c.getBlue()))
                     .append("\n");
         }
-        csv.append("\n");
 
         try {
             Files.write(Path.of("colors.csv"), csv.toString().getBytes());
@@ -45,6 +40,7 @@ public class Main implements ModInitializer {
             throw new RuntimeException(ex);
         }
 
+        System.err.println("We done saving the data, shutting down...");
         System.exit(0);
     }
 }
