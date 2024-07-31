@@ -25,14 +25,13 @@ public class Main implements ModInitializer {
 
         for (MapColor base : bases) {
             for (MapColor.Brightness shade : MapColor.Brightness.VALUES) {
-                var a = base.id > 3 ? 255 : 0;
+                int id = base.id * 4 + shade.id;
                 var rgba = base.calculateRGBColor(shade);
-                var r = rgba & 0xFF;
-                var g = (rgba >> 8) & 0xFF;
-                var b = (rgba >> 16) & 0xFF;
-                String line = base.id * 4 + shade.id
-                        + "," + r + "," + g + "," + b + "," + a + "," +
-                        String.format("%02X%02X%02X", r, g, b);
+                int r = rgba & 0xFF;
+                int g = (rgba >> 8) & 0xFF;
+                int b = (rgba >> 16) & 0xFF;
+                int a = base.id > 3 ? 255 : 0;
+                String line = String.format("%s,%s,%s,%s,%s,%02X%02X%02X", id, r, g, b, a, r, g, b);
                 table.add(line);
             }
         }
