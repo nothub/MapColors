@@ -6,7 +6,7 @@
   "shell": {
     "scripts": {
       "generate": [
-        "./generate.sh"
+        "./scripts/generate.sh"
       ]
     }
   }
