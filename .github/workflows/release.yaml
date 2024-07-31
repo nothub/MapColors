@@ -22,7 +22,7 @@ jobs:
 
       - run: ./generate.sh
 
-      - run: echo "MINECRAFT_VERSION=$(cat gradle.properties | grep -oP 'minecraft_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
+      - run: echo "TAG=$(date +%s)" >> $GITHUB_ENV
 
       - uses: actions/github-script@v7
         with:
@@ -30,13 +30,15 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/${{ env.MINECRAFT_VERSION }}',
+              ref: 'refs/tags/${{ env.TAG }}',
               sha: context.sha
             })
 
+      - run: echo "MINECRAFT_VERSION=$(cat gradle.properties | grep -oP 'minecraft_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
+
       - uses: softprops/action-gh-release@v2
         with:
-          name: 'MC ${{ env.MINECRAFT_VERSION }}'
-          body: 'Release generated at commit: ${{ github.sha }}'
+          name: '${{ env.MINECRAFT_VERSION }}'
+          body: 'Generated for Minecraft version ${{ env.MINECRAFT_VERSION }} at Git commit ${{ github.sha }}'
           files: 'build/dist/*'
-          tag_name: '${{ env.MINECRAFT_VERSION }}'
+          tag_name: '${{ env.TAG }}'
