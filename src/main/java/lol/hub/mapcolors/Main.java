@@ -38,7 +38,7 @@ public class Main implements ModInitializer {
 
         try {
             Files.write(Path.of("colors.csv"),
-                    String.join("\n", table).getBytes());
+                    (String.join("\n", table) + "\n").getBytes());
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
