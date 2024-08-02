@@ -30,7 +30,7 @@ public class Main implements ModInitializer {
                 int r = rgba & 0xFF;
                 int g = (rgba >> 8) & 0xFF;
                 int b = (rgba >> 16) & 0xFF;
-                int a = base.id > 3 ? 255 : 0;
+                int a = base.id == 0 ? 0 : 255;
                 String line = String.format("%s,%s,%s,%s,%s,%02X%02X%02X", id, r, g, b, a, r, g, b);
                 table.add(line);
             }
