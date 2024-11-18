@@ -26,7 +26,7 @@ public class Main implements ModInitializer {
         for (MapColor base : bases) {
             for (MapColor.Brightness shade : MapColor.Brightness.VALUES) {
                 int id = base.id * 4 + shade.id;
-                var rgba = base.calculateRGBColor(shade);
+                var rgba = base.calculateARGBColor(shade);
                 int r = rgba & 0xFF;
                 int g = (rgba >> 8) & 0xFF;
                 int b = (rgba >> 16) & 0xFF;
