@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   ci:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
 
       - uses: actions/checkout@v4
@@ -15,14 +15,11 @@ jobs:
 
       - uses: gradle/actions/wrapper-validation@v4
 
-      - uses: actions/setup-java@v4
+      - uses: jetify-com/devbox-install-action@v0.11.0
         with:
-          java-version: '21'
-          distribution: 'temurin'
-          check-latest: true
-          cache: 'gradle'
+          enable-cache: true
 
-      - run: ./scripts/generate.sh
+      - run: devbox run generate
 
       - run: echo "MINECRAFT_VERSION=$(cat gradle.properties | grep -oP 'minecraft_version=(\K[0-9\.]+)')" >> $GITHUB_ENV
       - uses: softprops/action-gh-release@v2
