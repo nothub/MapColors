@@ -24,8 +24,11 @@ public class Main implements ModInitializer {
                   border: 1px solid;
                 }
                 td {
-                  padding: 0.15em 1em 0.15em 1em;
+                  padding: 0.15em 0.75em 0.15em 0.75em;
                   text-align: center;
+                }
+                p {
+                  margin: 0;
                 }
                 </style>
             </head>
