@@ -66,9 +66,9 @@ public class Main implements ModInitializer {
             for (MapColor.Brightness shade : MapColor.Brightness.VALUES) {
                 int id = base.id * 4 + shade.id;
                 var rgba = base.calculateARGBColor(shade);
-                int r = rgba & 0xFF;
+                int r = (rgba >> 16) & 0xFF;
                 int g = (rgba >> 8) & 0xFF;
-                int b = (rgba >> 16) & 0xFF;
+                int b = rgba & 0xFF;
                 int a = base.id == 0 ? 0 : 255;
                 var hex = String.format("%02X%02X%02X", r, g, b);
                 csvEntries.add(String.format("%s,%s,%s,%s,%s,%s", id, r, g, b, a, hex));
