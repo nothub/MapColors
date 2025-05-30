@@ -15,7 +15,7 @@ jobs:
 
       - uses: gradle/actions/wrapper-validation@v4
 
-      - uses: jetify-com/devbox-install-action@v0.12.0
+      - uses: jetify-com/devbox-install-action@v0.13.0
         with:
           enable-cache: true
 
