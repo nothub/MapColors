@@ -1,6 +1,10 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2025-09-13T06:53:53Z",
+      "resolved": "github:NixOS/nixpkgs/6d7ec06d6868ac6d94c371458fc2391ded9ff13d?lastModified=1757746433&narHash=sha256-fEvTiU4s9lWgW7mYEU%2F1QUPirgkn%2BodUBTaindgiziY%3D"
+    },
     "temurin-bin-21@latest": {
       "last_modified": "2024-10-13T23:44:06Z",
       "resolved": "github:NixOS/nixpkgs/d4f247e89f6e10120f911e2e2d2254a050d0f732#temurin-bin-21",
