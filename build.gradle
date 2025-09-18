@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'fabric-loom' version '1.11-SNAPSHOT'
 }
 
 version = "0.1.0"
@@ -9,7 +9,7 @@ java {
     toolchain.languageVersion = JavaLanguageVersion.of(project.java_version)
 }
 tasks.withType(JavaCompile).configureEach {
-    it.sourceCompatibility = it.targetCompatibility = JavaVersion.toVersion(project.java_version)
+    it.options.release = Integer.valueOf(project.java_version)
     it.options.encoding = 'UTF-8'
 }
 
