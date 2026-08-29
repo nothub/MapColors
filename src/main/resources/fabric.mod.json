@@ -1,19 +1,22 @@
 {
   "schemaVersion": 1,
-  "id": "mapcolors",
-  "version": "${version}",
-  "name": "MapColors",
-  "description": "Dump map-block-color-table-mappings",
-  "license": "MIT",
+  "id": "@mod_id@",
+  "version": "@mod_version@",
+  "name": "@mod_name@",
+  "description": "@mod_description@",
+  "contact": {
+    "homepage": "https://github.com/nothub/MapColors"
+  },
+  "license": "@mod_license@",
   "environment": "server",
-  "accessWidener" : "mapcolors.accesswidener",
+  "accessWidener": "mapcolors.accesswidener",
   "entrypoints": {
     "main": [
       "lol.hub.mapcolors.Main"
     ]
   },
   "depends": {
-    "fabricloader": ">=${loader_version}",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "@minecraft_version@",
+    "fabricloader": ">=@fabric_loader_version@"
   }
 }

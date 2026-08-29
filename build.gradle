@@ -1,22 +1,19 @@
 plugins {
-    id 'fabric-loom' version '1.11-SNAPSHOT'
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
 }
 
-version = "0.1.0"
-group = "lol.hub"
+version = mod_version
+group = mod_group_id
 
-java {
-    toolchain.languageVersion = JavaLanguageVersion.of(project.java_version)
-}
-tasks.withType(JavaCompile).configureEach {
-    it.options.release = Integer.valueOf(project.java_version)
-    it.options.encoding = 'UTF-8'
+java.toolchain.languageVersion = JavaLanguageVersion.of(java_version.toInteger())
+
+base {
+    archivesName = mod_id
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
 }
 
 loom {
@@ -24,13 +21,30 @@ loom {
 }
 
 processResources {
-    inputs.property "version", project.version
-    inputs.property "minecraft_version", project.minecraft_version
-    inputs.property "loader_version", project.loader_version
-    filteringCharset "UTF-8"
+    filteringCharset = "UTF-8"
+
+    // Captured as local vars (rather than read from inside the filter
+    // closures) so the closures don't hold a live reference to the script
+    // object -- that reference can't be restored from the configuration cache.
+    def modId = project.mod_id
+    def modName = project.mod_name
+    def modVer = project.mod_version
+    def modLicense = project.mod_license
+    def modDescription = project.mod_description
+    def mcVersion = project.minecraft_version
+    def loaderVersion = project.fabric_loader_version
+
     filesMatching("fabric.mod.json") {
-        expand "version": project.version,
-                "minecraft_version": project.minecraft_version,
-                "loader_version": project.loader_version
+        filter { line -> line.replace("@mod_id@", modId) }
+        filter { line -> line.replace("@mod_name@", modName) }
+        filter { line -> line.replace("@mod_version@", modVer) }
+        filter { line -> line.replace("@mod_license@", modLicense) }
+        filter { line -> line.replace("@mod_description@", modDescription) }
+        filter { line -> line.replace("@minecraft_version@", mcVersion) }
+        filter { line -> line.replace("@fabric_loader_version@", loaderVersion) }
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }

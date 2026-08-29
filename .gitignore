@@ -1,6 +1,5 @@
-/.devbox/
 /.gradle/
-/.idea/
 /build/
 /run/
-/remappedSrc/
+/.idea/
+/.claude/settings.local.json
