@@ -1,6 +1,9 @@
 # MapColors
 
-Generates map-pixel to block-color mappings.
+Fabric mod. Generates map-pixel to block-color mappings.
+
+CI tool, not a shipped mod — dumps map-color data as a build artifact.
+Releases are bare tags, no Modrinth/CurseForge listing.
 
 ---
 
