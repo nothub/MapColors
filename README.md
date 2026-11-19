@@ -2,11 +2,11 @@
 
 Fabric mod. Dumps map-pixel to block-color mappings from the game.
 
----
-
 Latest:
-- [colors.html](https://github.com/nothub/MapColors/releases/latest/download/colors.html)
-- [colors.csv](https://github.com/nothub/MapColors/releases/latest/download/colors.csv)
+- [colors.html](https://github.com/nothub/mapcolors/releases/latest/download/colors.html)
+- [colors.csv](https://github.com/nothub/mapcolors/releases/latest/download/colors.csv)
+
+---
 
 Infos: [minecraft.wiki](https://minecraft.wiki/w/Map_item_format#Map_colors)
 

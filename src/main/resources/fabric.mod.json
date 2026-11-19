@@ -5,7 +5,7 @@
   "name": "@mod_name@",
   "description": "@mod_description@",
   "contact": {
-    "homepage": "https://github.com/nothub/MapColors"
+    "homepage": "https://github.com/nothub/mapcolors"
   },
   "license": "@mod_license@",
   "environment": "server",
