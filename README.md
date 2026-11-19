@@ -2,7 +2,7 @@
 
 Fabric mod. Dumps map-pixel to block-color mappings from the game.
 
-[![GitHub](https://img.shields.io/github/stars/nothub/mapcolors)](https://github.com/nothub/mapcolors)
+[![GitHub](https://img.shields.io/github/stars/nothub/mapcolors?style=flat&label=GitHub&logo=github&color=181717)](https://github.com/nothub/mapcolors)
 
 Latest:
 - [colors.html](https://github.com/nothub/mapcolors/releases/latest/download/colors.html)
